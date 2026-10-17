@@ -1,2 +1,7 @@
-# slm-agents-paper
-My NeurIPS Workshop paper
+# Same Quantization, Different Failures
+Paper accepted to 1st Workshop on Small Language Model Agents (SLM-Agents) at NeurIPS
+
+## Abstract
+Post-training quantization is common in local deployments of tool-calling models, but its effect on small language models’ multi-turn behavior is not well understood. We evaluate six small open-weight models at four GGUF precisions (F16, Q8_0, Q5_K_M, Q4_K_M) on the multi-turn portion of BFCL v4, parsing executed tool calls into runtime-derived failure categories alongside final task accuracy. Four of the six sit at a full-precision floor or are output-format-limited; our significant results hold for the other two, xLAM-2-3B and Qwen3-1.7B, not the full set. At Q4_K_M their task accuracy falls from 58.00% to 51.75% (xLAM-2-3B) and 14.50% to 8.75% (Qwen3-1.7B), both significant under a paired McNemar test with Bonferroni correction. Yet their failure signatures differ: xLAM-2-3B’s per-call success rate is stable while Qwen3-1.7B’s wrong-argument rate rises from 20.8% to 26.9%, and Qwen3-1.7B’s degradation increasingly takes the form of error-free-but-wrong trajectories that no runtime channel captures. Gemma-3-4B-it is also significant (9 of 400 tasks) but floor-adjacent, hence corroborating rather than headline. Our contribution is a reusable diagnostic: per-call, per-trajectory, and clean-but-failed (silent-failure) rates read together, with a floor/format check that separates a quantization effect from a full-precision ceiling. Aggregate accuracy hides which failure mode grows, and these two models show why that decomposition is needed.
+
+Code release coming soon.
